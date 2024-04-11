@@ -1,3 +1,8 @@
+/*
+  Este código foi criado por Otávio T. F. da Cunha
+  Em 11/04/2024 - Para a atividade técnica da Objective.
+*/
+
 class MarvelPersonagemModel {
   List<PersonagemData> results = [];
   int _quantidadeDados = 0;

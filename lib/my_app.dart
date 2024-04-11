@@ -1,3 +1,8 @@
+/*
+  Este código foi criado por Otávio T. F. da Cunha
+  Em 11/04/2024 - Para a atividade técnica da Objective.
+*/
+
 import 'package:flutter/material.dart';
 import 'package:herois_marvel/const/colors.dart';
 import 'pages/home_page.dart';

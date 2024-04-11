@@ -2,6 +2,10 @@
 
 Projeto de busca e exibição de heróis da Marvel, utilizando a API do site https://developer.marvel.com/
 
+# Dados do autor do código:
+
+Otávio Thadeu Franklin da Cunha
+
 ## Requisitos:
 <ol>
     <li>- [x] Utilizar a Marvel Api: https://developer.marvel.com/​</li>
