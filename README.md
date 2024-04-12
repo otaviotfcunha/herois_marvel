@@ -29,7 +29,7 @@ A((Início)) --> B[Home Page]
 B -- Pesquisar Herói --> C[Exibe Heróis da busca]
 C --> E
 B-->D[Exibição dos Heróis]
-D-->E{Clicar no ícone '->' do Herói}
+D-->E{Clicar na linha do Herói}
 E --Sim--> F[Exibir dados do Herói]
 F --Voltar/Fechar-->B
 ```

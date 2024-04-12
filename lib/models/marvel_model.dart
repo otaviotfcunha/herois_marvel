@@ -20,11 +20,6 @@ class MarvelPersonagemModel {
     }
   }
 
-  MarvelPersonagemModel.fromJsonUnico(Map<String, dynamic> json) {
-    results = <PersonagemData>[];
-    results.add(PersonagemData.fromJson(json));
-  }
-
   int get quantidadeDados => _quantidadeDados;
 
   Map<String, dynamic> toJson() {
@@ -39,13 +34,12 @@ class PersonagemData {
   String nome = "";
   String descricao = "";
   String foto = "";
+  List<String> series = [];
+  List<String> eventos = [];
   int totalPages = 0;
 
   PersonagemData(
-    this.nome,
-    this.foto,
-    this.descricao,
-  );
+      this.nome, this.foto, this.descricao, this.series, this.eventos);
 
   PersonagemData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -54,25 +48,29 @@ class PersonagemData {
         json['thumbnail']['path'] + "." + json['thumbnail']['extension'] ?? "";
     descricao = json['description'].toString();
     totalPages = json['totalPages'] ?? 0;
+
+    if (json['series']['items'] != null) {
+      json['series']['items'].forEach((v) {
+        series.add(v['name'].toString());
+      });
+    }
+    if (json['events']['items'] != null) {
+      json['events']['items'].forEach((v) {
+        eventos.add(v['name'].toString());
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['nome'] = this.nome;
-    data['descricao'] = this.descricao;
-    data['foto'] = this.foto;
+    data['name'] = this.nome; // Corrigindo 'nome' para 'name'
+    data['description'] =
+        this.descricao; // Corrigindo 'descricao' para 'description'
+    data['thumbnail'] = {'path': this.foto}; // Corrigindo 'foto' para 'path'
     data['totalPages'] = this.totalPages;
-    return data;
-  }
-
-  Map<String, dynamic> toJsonEndpoint() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = this.id;
-    data['nome'] = this.nome;
-    data['descricao'] = this.descricao;
-    data['foto'] = this.foto;
-    data['totalPages'] = this.totalPages;
+    data['series'] = this.series;
+    data['events'] = this.eventos;
     return data;
   }
 }
